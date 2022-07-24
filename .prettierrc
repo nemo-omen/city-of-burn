@@ -1,0 +1,12 @@
+{
+  "tabWidth": 2,
+  "useTabs": false,
+  "printWidth": 110,
+  "semi": true,
+  "trailingComma": "all",
+  "singleQuote": true,
+  "parser": "typescript",
+  "svelteBracketNewLine": true,
+  "svelteAllowShorthand": true,
+  "svelteIndentScriptAndStyle": true
+}

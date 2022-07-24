@@ -1,0 +1,17 @@
+{
+  "name": "@city-of-burn",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "pnpm --stream -r dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "workspaces": [
+    "client",
+    "server",
+    "packages/*"
+  ]
+}
