@@ -34,10 +34,7 @@ importers:
     specifiers: {}
 
   server:
-    specifiers:
-      '@city-of-burn/types': workspace:^0.0.0
-    dependencies:
-      '@city-of-burn/types': link:../packages/burn-types
+    specifiers: {}
 
 packages:
 

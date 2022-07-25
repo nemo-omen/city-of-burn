@@ -10,15 +10,18 @@ const db = new DB(`${dataDir}/test.db`);
 const dummyUsers = [
   {
     email: 'bob@bob.bob',
-    username: 'bob'
+    username: 'bob',
+    password: '12345'
   },
   {
     email: 'lisa@lisa.lisa',
-    username: 'lisa'
+    username: 'lisa',
+    password: '45678'
   },
   {
     email: 'elix@whatever.lol',
-    username: 'elix'
+    username: 'elix',
+    password: '56789'
   }
 ];
 
@@ -29,7 +32,8 @@ export function populateDB() {
     CREATE TABLE IF NOT EXISTS users(
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       email TEXT,
-      username TEXT
+      username TEXT,
+      password TEXT
     )
   `);
 
@@ -38,7 +42,7 @@ export function populateDB() {
   }
 
   for (const result of db.query("SELECT * FROM users")) {
-    const [id, email, username] = result;
-    console.log({ id, email, username });
+    const [id, email, username, password] = result;
+    console.log({ id, email, username, password });
   }
 }
