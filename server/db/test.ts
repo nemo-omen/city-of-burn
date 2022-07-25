@@ -38,7 +38,7 @@ export function populateDB() {
   `);
 
   for (const user of dummyUsers) {
-    db.query("INSERT INTO users (email, username) VALUES (?, ?)", [user.email, user.username]);
+    db.query("INSERT INTO users (email, username, password) VALUES (?, ?, ?)", [user.email, user.username, user.password]);
   }
 
   for (const result of db.query("SELECT * FROM users")) {
