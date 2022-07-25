@@ -20,6 +20,7 @@
     "vite": "^3.0.0"
   },
   "dependencies": {
-    "@city-of-burn/types": "workspace:"
+    "@city-of-burn/types": "workspace:",
+    "tinro": "^0.6.12"
   }
 }
