@@ -1,6 +1,11 @@
 import { DB } from "https://deno.land/x/sqlite@v3.4.0/mod.ts";
+import { ensureDir } from '../deps.ts';
 
-const db = new DB('test.db');
+const dataDir = '../data';
+
+await ensureDir('../data');
+
+const db = new DB(`${dataDir}/test.db`);
 
 const dummyUsers = [
   {
