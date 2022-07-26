@@ -1,2 +1,0 @@
-"build-dev": "npm run build && NODE_ENV=development node --inspect dist/index.js",
-"dev": "nodemon --ext ts --exec \"npm run build-dev\"",
