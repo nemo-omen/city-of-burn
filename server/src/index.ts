@@ -1,14 +1,24 @@
 import express from 'express';
+import cors from 'cors';
+import { dbVars } from './constants.js';
 
-const PORT = 8080;
 const app = express();
+app.use(cors());
 
 app.get('/', (request, response) => {
   response
     .status(200)
-    .send('Looks like I work!');
+    .json({
+      hello: 'world'
+    });
 });
 
-app.listen(PORT, () => {
+if (import.meta.env.PROD) {
+  const PORT = 8080;
+
+  app.listen(PORT);
+
   console.log(`Server running at http://localhost:${PORT}`);
-});
+}
+
+export const viteNodeApp = app;
