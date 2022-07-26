@@ -9,4 +9,4 @@
 `/auth/{verb}` 
   - `{register}` - Registration
   - `{login}` - Login
-  - `{verify(?)}` - no idea if this is needed, but I'm guessing we'll need a toute to verify credentials, though this is probably just a middleware
+  - `{verify(?)}` - no idea if this is needed, but I'm guessing we'll need a route to verify credentials, though this is probably just a middleware
