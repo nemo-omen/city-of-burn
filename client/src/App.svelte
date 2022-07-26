@@ -18,7 +18,11 @@
     .catch((error) => console.error(error));
 </script>
 
-<main />
+<main>
+  {#if serverResponse !== undefined}
+    Hello, {serverResponse.hello}
+  {/if}
+</main>
 
 <style>
 </style>
