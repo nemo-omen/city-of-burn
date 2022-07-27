@@ -21,7 +21,7 @@
     "vite": "^3.0.0"
   },
   "dependencies": {
-    "@city-of-burn/server": "workspace:0.0.0",
+    "@city-of-burn/server": "workspace:0.0.1",
     "@trpc/client": "^9.26.2",
     "@trpc/server": "^9.26.2",
     "tinro": "^0.6.12",

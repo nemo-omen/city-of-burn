@@ -4,12 +4,11 @@ import * as trpc from '@trpc/server';
 import express from 'express';
 import ws from 'ws';
 
-import * as trpc from '@trpc/server';
 import * as trpcExpress from '@trpc/server/adapters/express';
 import { applyWSSHandler } from '@trpc/server/adapters/ws';
 
-import { dbVars } from './src/constants.js';
-import { appRouter } from './router.ts';
+import { dbVars } from './src/constants';
+import { appRouter } from './router';
 
 // express setup
 const app = express();
