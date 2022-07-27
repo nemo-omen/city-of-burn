@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "main": "./src/main.ts",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -20,7 +21,10 @@
     "vite": "^3.0.0"
   },
   "dependencies": {
-    "@city-of-burn/types": "workspace:",
-    "tinro": "^0.6.12"
+    "@city-of-burn/server": "workspace:0.0.0",
+    "@trpc/client": "^9.26.2",
+    "@trpc/server": "^9.26.2",
+    "tinro": "^0.6.12",
+    "zod": "^3.17.10"
   }
 }

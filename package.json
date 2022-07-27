@@ -2,9 +2,8 @@
   "name": "@city-of-burn",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "dev": "pnpm --stream -r dev"
+    "dev": "nx run-many --target=dev --all"
   },
   "keywords": [],
   "author": "",
@@ -13,5 +12,8 @@
     "client",
     "server",
     "packages/*"
-  ]
+  ],
+  "devDependencies": {
+    "nx": "14.4.3"
+  }
 }
