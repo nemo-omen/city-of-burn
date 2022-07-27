@@ -34,14 +34,14 @@ export const appRouter = trpc
     }),
     resolve({ ctx, input }) {
       messages.push(input);
-      ee.emit('addMessage');
+      ee.emit('addMessage', input);
       return input;
     }
   })
   .subscription('onAdd', {
     resolve({ ctx }) {
       return new trpc.Subscription<ChatMessage>((emit) => {
-        const onAdd = (data: ChatMessage) => {
+        function onAdd(data: ChatMessage) {
           emit.data(data);
         };
 

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { client } from './lib/trpc.ts';
+  import { client, wsClient } from './lib/trpc';
 
   let fakeUser = {
     email: 'me@me.me',
@@ -26,18 +26,37 @@
     }
   }
 
+  const uuid = crypto.randomUUID();
+
   async function sendMessage(input) {
     const message = {
-      user: 'user1',
+      user: uuid,
       message: input,
     };
 
     client.mutation('addMessage', message);
-    getMessages();
+    // getMessages();
   }
 
   onMount(() => {
     getMessages();
+  });
+
+  const unsub = client.subscription('onAdd', null, {
+    onNext(data) {
+      if (data.type === 'data') {
+        const message = data.data;
+        messages = [...messages, { ...message }];
+        // console.log(message)
+      }
+    },
+    onError(error) {
+      console.error('Error: ', error);
+    },
+    onDone() {
+      console.log('Done - closing websocket');
+      wsClient.close();
+    },
   });
 </script>
 
