@@ -9,16 +9,8 @@
     last: 'Sister',
   };
 
-  // let serverResponse;
-  // let trpcResponse;
   $: messages = [];
   let messageInput = '';
-
-  // fetch('http://localhost:8080')
-  //   .then((response) => response.json())
-  //   .then((data) => (serverResponse = { ...data }))
-  //   .then(() => console.log(serverResponse))
-  //   .catch((error) => console.error(error));
 
   async function getMessages() {
     client

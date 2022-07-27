@@ -56,12 +56,14 @@ importers:
       typescript: ^4.6.4
       vite: ^3.0.0
       vite-plugin-node: ^1.0.0
+      ws: ^8.8.1
       zod: ^3.17.10
     dependencies:
       '@trpc/server': 9.26.2
       cors: 2.8.5
       dotenv: 16.0.1
       passport: 0.6.0
+      ws: 8.8.1
       zod: 3.17.10
     devDependencies:
       '@types/cors': 2.8.12
@@ -2023,6 +2025,19 @@ packages:
   /wrappy/1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
     dev: true
+
+  /ws/8.8.1:
+    resolution: {integrity: sha512-bGy2JzvzkPowEJV++hF07hAD6niYSr0JzBNo/J29WsB57A2r7Wlc1UFcTR9IzrPvuNVO4B8LGqF8qcpsVOhJCA==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: ^5.0.2
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+    dev: false
 
   /y18n/5.0.8:
     resolution: {integrity: sha512-0pfFzegeDWJHJIAmTLRP2DwHjdF5s7jo9tuztdQxAhINCdvS+3nGINqPd00AphqJR/0LhANUS6/+7SCb98YOfA==}
