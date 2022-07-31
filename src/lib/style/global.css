@@ -1,0 +1,122 @@
+:root {
+  font-size: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  --doc-width: 100vw;
+
+  /* Colors */
+  --background: #00151b;
+  --background-offset: #001b22;
+  --foreground: #fffde8;
+  --foreground-offset: #ecead5;
+
+  --accent: tomato;
+  --highlight: #004457;
+  --highlight-offset: #003d4e;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+a {
+  color: var(--currentColor);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+input,
+button {
+  font-size: 1rem;
+  padding: 0.5rem;
+  background: var(--background-offset);
+  border: 1px solid var(--highlight);
+  color: var(--foreground);
+}
+
+input:focus,
+button:focus {
+  outline: 2px solid var(--highlight);
+}
+
+button {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--background);
+}
+
+form button {
+  align-self: flex-start;
+  display: inline;
+}
+
+.auth {
+  margin: 5rem 0;
+}
+
+.auth>*+* {
+  margin-top: 2rem;
+}
+
+.auth h2 {
+  text-align: center;
+}
+
+.form-group-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media screen and (min-width: 600px) {
+  :root {
+    --doc-width: 90vw;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+    --doc-width: 80vw;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  :root {
+    --doc-width: 70vw;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  :root {
+    --doc-width: 60vw;
+  }
+}
