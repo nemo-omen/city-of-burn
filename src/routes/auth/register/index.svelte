@@ -2,7 +2,6 @@
 	import type { Load } from '@sveltejs/kit';
 
 	export const load: Load = ({ session, props }) => {
-		console.log(session);
 		if (session.user) {
 			return {
 				status: 302,
@@ -55,7 +54,11 @@
 		];
 
 		// Disable all form fields just in case!
-		formFields.forEach((field: HTMLInputElement | HTMLButtonElement) => (field.disabled = true));
+		formFields.forEach((field: HTMLInputElement | HTMLButtonElement) => {
+			if (field !== undefined) {
+				field.disabled = true;
+			}
+		});
 		formEl.reset();
 	}
 </script>
