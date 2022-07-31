@@ -3,7 +3,7 @@
 </script>
 
 <header>
-	<div class="header-inner">
+	<div class="header-inner inner">
 		<a href="/" class="site-anchor">
 			<h1>City of Burn</h1>
 		</a>
@@ -18,6 +18,7 @@
 
 			{#if $session.user}
 				<a href="/game">Play</a>
+				<a href={`/account/${$session.user.username}`}>Account</a>
 				<a href="/auth/logout">Log Out</a>
 			{/if}
 		</nav>
@@ -30,15 +31,6 @@
 		padding: 1rem;
 		background: var(--background-offset);
 	}
-
-	.header-inner {
-		display: flex;
-		justify-content: space-between;
-		align-items: baseline;
-		max-width: var(--doc-width);
-		margin: 0 auto;
-	}
-
 	nav {
 		display: flex;
 		gap: 1rem;
