@@ -1,3 +1,19 @@
+<script context="module" lang="ts">
+	import type { Load } from '@sveltejs/kit';
+
+	export const load: Load = ({ session, props }) => {
+		if (session.user) {
+			console.log(session);
+			return {
+				status: 302,
+				redirect: '/game'
+			};
+		}
+
+		return { props };
+	};
+</script>
+
 <script lang="ts">
 	import { session } from '$app/stores';
 	import { sendHttp } from '$lib/api';
@@ -15,8 +31,10 @@
 			error = response.error;
 		}
 
-		$session.user = response.user;
+		console.log({ response });
 
+		$session.user = response.user;
+		// console.log($session);
 		formEl.reset();
 	}
 </script>

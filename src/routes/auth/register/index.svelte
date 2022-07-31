@@ -1,5 +1,20 @@
+<script context="module" lang="ts">
+	import type { Load } from '@sveltejs/kit';
+
+	export const load: Load = ({ session, props }) => {
+		if (session.user) {
+			return {
+				status: 302,
+				redirect: '/game'
+			};
+		}
+
+		return { props };
+	};
+</script>
+
 <script lang="ts">
-	import { sendHttp } from '../../../lib/api';
+	import { sendHttp } from '$lib/api';
 
 	export let error: string;
 	export let success: string;

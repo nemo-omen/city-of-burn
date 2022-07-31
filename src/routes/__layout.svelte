@@ -20,4 +20,23 @@
 		max-width: var(--doc-width);
 		margin: 0 auto;
 	}
+
+	header {
+		margin: 0 0 2rem 0;
+		padding: 1rem;
+		background: var(--background);
+	}
+
+	.header-inner {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		max-width: var(--doc-width);
+		margin: 0 auto;
+	}
+
+	nav {
+		display: flex;
+		gap: 1rem;
+	}
 </style>

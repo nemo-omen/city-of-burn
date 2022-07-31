@@ -4,6 +4,11 @@ import * as cookie from 'cookie';
 
 import { db } from '$lib/db';
 
+function matchesEmail(value: string): boolean {
+  const matches = value.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+  return matches;
+}
+
 export const POST: RequestHandler = async ({ request }) => {
   const form = await request.formData();
   const emailusername = form.get('emailusername');
@@ -33,7 +38,6 @@ export const POST: RequestHandler = async ({ request }) => {
 
   if (matchesEmail(emailusername)) {
     email = emailusername;
-    console.log('Submitted an email address!');
     user = await db.user.findUnique({
       where: { email }
     });
@@ -68,7 +72,7 @@ export const POST: RequestHandler = async ({ request }) => {
   return {
     status: 200,
     body: {
-      user: username,
+      user: user.username,
       success: 'Success',
     },
     headers: {
@@ -86,8 +90,3 @@ export const POST: RequestHandler = async ({ request }) => {
     }
   };
 };
-
-function matchesEmail(value: string): boolean {
-  const matches = value.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-  return matches;
-}

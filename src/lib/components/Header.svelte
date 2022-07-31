@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { session } from '$app/stores';
 </script>
 
 <header>
@@ -9,10 +10,16 @@
 
 		<nav>
 			<a href="/">Home</a>
-			<a href="/auth/login">Login</a>
-			<a href="/auth/register">Register</a>
-			<a href="/game">Play</a>
-			<a href="/auth/logout">Log Out</a>
+
+			{#if !$session.user}
+				<a href="/auth/login">Login</a>
+				<a href="/auth/register">Register</a>
+			{/if}
+
+			{#if $session.user}
+				<a href="/game">Play</a>
+				<a href="/auth/logout">Log Out</a>
+			{/if}
 		</nav>
 	</div>
 </header>
