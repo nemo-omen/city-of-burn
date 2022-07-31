@@ -3,7 +3,6 @@
 
 	export const load: Load = ({ session, props }) => {
 		if (session.user) {
-			console.log(session);
 			return {
 				status: 302,
 				redirect: '/game'
@@ -32,8 +31,6 @@
 		if (response.error) {
 			error = response.error;
 		}
-
-		console.log({ response });
 
 		$session.user = response.user;
 
