@@ -28,7 +28,7 @@
 	header {
 		margin: 0 0 2rem 0;
 		padding: 1rem;
-		background: var(--background);
+		background: var(--background-offset);
 	}
 
 	.header-inner {

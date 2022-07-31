@@ -20,8 +20,10 @@
 
 	export let error: string;
 
-	let emailusername = '';
-	let password = '';
+	let emailusername: string = '';
+	let password: string = '';
+
+	let button: HTMLButtonElement;
 
 	async function login(event: SubmitEvent) {
 		const formEl = event.target as HTMLFormElement;
@@ -34,7 +36,8 @@
 		console.log({ response });
 
 		$session.user = response.user;
-		// console.log($session);
+
+		button.disabled = true;
 		formEl.reset();
 	}
 </script>
@@ -71,7 +74,7 @@
 		{/if}
 
 		<div class="form-group-flex">
-			<button type="submit">Log In</button>
+			<button type="submit" bind:this={button}>Log In</button>
 			<a href="/auth/register">Register Instead</a>
 		</div>
 	</form>

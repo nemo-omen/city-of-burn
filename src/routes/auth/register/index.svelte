@@ -2,6 +2,7 @@
 	import type { Load } from '@sveltejs/kit';
 
 	export const load: Load = ({ session, props }) => {
+		console.log(session);
 		if (session.user) {
 			return {
 				status: 302,
@@ -14,6 +15,7 @@
 </script>
 
 <script lang="ts">
+	import { session } from '$app/stores';
 	import { sendHttp } from '$lib/api';
 
 	export let error: string;
@@ -22,6 +24,11 @@
 	let email = '';
 	let password = '';
 	let username = '';
+
+	let button: HTMLButtonElement;
+	let emailInput: HTMLInputElement;
+	let usernameInput: HTMLInputElement;
+	let passwordInput: HTMLInputElement;
 
 	let isInvalid = false;
 
@@ -37,8 +44,18 @@
 
 		if (response.success) {
 			success = response.success;
+			$session.user = response.user;
 		}
 
+		let formFields: Array<HTMLInputElement | HTMLButtonElement> = [
+			button,
+			emailInput,
+			usernameInput,
+			passwordInput
+		];
+
+		// Disable all form fields just in case!
+		formFields.forEach((field: HTMLInputElement | HTMLButtonElement) => (field.disabled = true));
 		formEl.reset();
 	}
 </script>
@@ -79,7 +96,7 @@
 		{/if}
 
 		<div class="form-group-flex">
-			<button type="submit">Register</button>
+			<button type="submit" bind:this={button}>Register</button>
 			<a href="/auth/login">Login Instead</a>
 		</div>
 	</form>

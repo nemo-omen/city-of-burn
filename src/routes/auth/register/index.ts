@@ -1,5 +1,6 @@
 import type { RequestHandler } from '@sveltejs/kit';
 import * as bcrypt from 'bcrypt';
+import * as cookie from 'cookie';
 import { db } from '$lib/db';
 
 export const POST: RequestHandler = async ({ request }) => {
@@ -46,7 +47,7 @@ export const POST: RequestHandler = async ({ request }) => {
   }
 
   try {
-    await db.user.create({
+    const userRecord = await db.user.create({
       data: {
         email,
         username,
@@ -57,7 +58,21 @@ export const POST: RequestHandler = async ({ request }) => {
     return {
       status: 200,
       body: {
+        user: userRecord.username,
         success: 'Success'
+      },
+      headers: {
+        'Set-Cookie': cookie.serialize(
+          'session',
+          userRecord.userAuthToken,
+          {
+            path: '/',
+            httpOnly: true,
+            sameSite: 'strict',
+            secure: process.env.NODE_ENV === 'production',
+            maxAge: 60 * 60 * 24 * 30,
+          }
+        )
       }
     };
   } catch (error) {

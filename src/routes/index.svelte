@@ -1,8 +1,7 @@
 <script lang="ts">
-	import '../lib/style/global.css';
-
-	// import { io } from 'socket.io-client';
+	import '$lib/style/global.css';
 	import { onMount } from 'svelte';
+	import { io } from 'socket.io-client';
 
 	// let socket;
 

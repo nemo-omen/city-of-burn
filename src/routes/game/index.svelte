@@ -12,7 +12,7 @@
 		return {
 			status: 200,
 			props: {
-				user: session.user.username
+				user: session.user
 			}
 		};
 	};

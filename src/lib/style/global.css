@@ -24,6 +24,9 @@
 body {
   background-color: var(--background);
   color: var(--foreground);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 a {
