@@ -27,12 +27,22 @@
 
 <style>
 	header {
-		margin: 0 0 2rem 0;
+		margin: 0;
 		padding: 1rem;
 		background: var(--background-offset);
 	}
 	nav {
 		display: flex;
 		gap: 1rem;
+		font-size: var(--step--1);
+	}
+
+	.header-inner {
+		flex-wrap: wrap;
+	}
+
+	.site-anchor {
+		font-family: var(--serif);
+		letter-spacing: 0.15em;
 	}
 </style>

@@ -1,6 +1,10 @@
 :root {
+
+  /* Fonts */
+  --sans: 'Atkinson Hyperlegible', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --serif: 'Libre Baskerville', Georgia, serif;
+  font-family: var(--sans);
   font-size: 16px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
   --doc-width: 100vw;
 
@@ -10,9 +14,49 @@
   --foreground: #fffde8;
   --foreground-offset: #ecead5;
 
-  --accent: tomato;
-  --highlight: #004457;
-  --highlight-offset: #003d4e;
+  --accent-light: #fd4d82;
+  --accent: #ec366c;
+  --accent-offset: #d12357;
+  --highlight-light: #00b6e9;
+  --highlight: #0090b8;
+  --highlight-offset: #006a88;
+
+  --transition-default: 0.15s ease-in-out;
+
+  /* Fluid type sizes. Courtesy: utopia.fyi */
+  --step--2: clamp(0.96rem, calc(1.23rem + -0.38vw), 1.15rem);
+  --step--1: clamp(1.20rem, calc(1.24rem + -0.06vw), 1.23rem);
+  --step-0: clamp(1.31rem, calc(1.24rem + 0.37vw), 1.50rem);
+  --step-1: clamp(1.40rem, calc(1.22rem + 0.93vw), 1.88rem);
+  --step-2: clamp(1.49rem, calc(1.16rem + 1.66vw), 2.34rem);
+  --step-3: clamp(1.59rem, calc(1.07rem + 2.61vw), 2.93rem);
+  --step-4: clamp(1.70rem, calc(0.94rem + 3.83vw), 3.66rem);
+  --step-5: clamp(1.82rem, calc(0.74rem + 5.39vw), 4.58rem);
+
+  /* Fluid spacing. Courtesy: utopia.fyi */
+  --space-3xs: clamp(0.31rem, calc(0.29rem + 0.12vw), 0.38rem);
+  --space-2xs: clamp(0.69rem, calc(0.66rem + 0.12vw), 0.75rem);
+  --space-xs: clamp(1.00rem, calc(0.95rem + 0.24vw), 1.13rem);
+  --space-s: clamp(1.31rem, calc(1.24rem + 0.37vw), 1.50rem);
+  --space-m: clamp(2.00rem, calc(1.90rem + 0.49vw), 2.25rem);
+  --space-l: clamp(2.63rem, calc(2.48rem + 0.73vw), 3.00rem);
+  --space-xl: clamp(3.94rem, calc(3.72rem + 1.10vw), 4.50rem);
+  --space-2xl: clamp(5.25rem, calc(4.96rem + 1.46vw), 6.00rem);
+  --space-3xl: clamp(7.88rem, calc(7.44rem + 2.20vw), 9.00rem);
+
+  /* One-up pairs */
+  --space-3xs-2xs: clamp(0.31rem, calc(0.14rem + 0.85vw), 0.75rem);
+  --space-2xs-xs: clamp(0.69rem, calc(0.52rem + 0.85vw), 1.13rem);
+  --space-xs-s: clamp(1.00rem, calc(0.80rem + 0.98vw), 1.50rem);
+  --space-s-m: clamp(1.31rem, calc(0.95rem + 1.83vw), 2.25rem);
+  --space-m-l: clamp(2.00rem, calc(1.61rem + 1.95vw), 3.00rem);
+  --space-l-xl: clamp(2.63rem, calc(1.89rem + 3.66vw), 4.50rem);
+  --space-xl-2xl: clamp(3.94rem, calc(3.13rem + 4.02vw), 6.00rem);
+  --space-2xl-3xl: clamp(5.25rem, calc(3.79rem + 7.32vw), 9.00rem);
+
+  /* Custom pairs */
+  --space-s-l: clamp(1.31rem, calc(0.65rem + 3.29vw), 3.00rem);
+  --space-m-xl: clamp(2.00rem, calc(1.02rem + 4.88vw), 4.50rem);
 }
 
 * {
@@ -22,11 +66,16 @@
 }
 
 body {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
   background-color: var(--background);
   color: var(--foreground);
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+}
+
+::selection {
+  background: var(--foreground);
+  color: var(--background);
 }
 
 /* Header/Footer wrapper */
@@ -109,6 +158,10 @@ fieldset {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.dialog {
+  color: var(--highlight-light);
 }
 
 @media screen and (min-width: 600px) {

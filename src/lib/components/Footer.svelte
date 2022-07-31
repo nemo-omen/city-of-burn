@@ -9,7 +9,6 @@
 
 <style>
 	footer {
-		margin-top: auto;
 		background: var(--background-offset);
 	}
 </style>
