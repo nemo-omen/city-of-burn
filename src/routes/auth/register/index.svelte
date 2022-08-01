@@ -63,44 +63,46 @@
 	}
 </script>
 
-<section class="auth">
-	<h2>Register</h2>
-	<form on:submit|preventDefault={register} method="post">
-		<fieldset>
-			<label for="email">Email</label>
-			<input type="email" name="email" id="email" required bind:value={email} />
-		</fieldset>
-		<fieldset>
-			<label for="username">Username</label>
-			<input type="text" name="username" id="username" required bind:value={username} />
-		</fieldset>
-		<fieldset>
-			<label for="password">Password</label>
-			<input
-				type="password"
-				name="password"
-				id="password"
-				minlength="8"
-				required
-				bind:value={password}
-			/>
-		</fieldset>
+<main>
+	<section class="auth">
+		<h2>Register</h2>
+		<form on:submit|preventDefault={register} method="post">
+			<fieldset>
+				<label for="email">Email</label>
+				<input type="email" name="email" id="email" required bind:value={email} />
+			</fieldset>
+			<fieldset>
+				<label for="username">Username</label>
+				<input type="text" name="username" id="username" required bind:value={username} />
+			</fieldset>
+			<fieldset>
+				<label for="password">Password</label>
+				<input
+					type="password"
+					name="password"
+					id="password"
+					minlength="8"
+					required
+					bind:value={password}
+				/>
+			</fieldset>
 
-		{#if error}
-			<p class="error">{error}</p>
-		{/if}
-		{#if success}
-			<div>
-				<p>Thank you for signing up!</p>
-				<p>
-					<a href="/auth/login">Go ahead and log in!</a>
-				</p>
+			{#if error}
+				<p class="error">{error}</p>
+			{/if}
+			{#if success}
+				<div>
+					<p>Thank you for signing up!</p>
+					<p>
+						<a href="/auth/login">Go ahead and log in!</a>
+					</p>
+				</div>
+			{/if}
+
+			<div class="form-group-flex">
+				<button type="submit" bind:this={button}>Register</button>
+				<a href="/auth/login">Login Instead</a>
 			</div>
-		{/if}
-
-		<div class="form-group-flex">
-			<button type="submit" bind:this={button}>Register</button>
-			<a href="/auth/login">Login Instead</a>
-		</div>
-	</form>
-</section>
+		</form>
+	</section>
+</main>

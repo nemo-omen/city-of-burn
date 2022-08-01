@@ -22,6 +22,10 @@
 	export let user: string;
 </script>
 
-<h2>Game</h2>
+<main>
+	<section class="game">
+		<h2>Game</h2>
 
-<p>Welcome to the game, {user.username}</p>
+		<p>Welcome to the game, {user.username}</p>
+	</section>
+</main>

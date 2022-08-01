@@ -9,15 +9,9 @@
 
 <Header />
 
-<main>
-	<slot />
-</main>
+<slot />
 
 <Footer />
 
 <style>
-	main {
-		width: var(--doc-width);
-		margin: 0 auto;
-	}
 </style>

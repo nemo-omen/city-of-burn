@@ -41,12 +41,31 @@
 <div
 	class="game-ui"
 	in:fade={{ delay: 400, duration: 500, easing: quintInOut }}
-	out={{ duration: 400, easing: quintInOut }}
-/>
-<button on:click={exitGame}>Leave the Game</button>
+	out:fade={{ duration: 400, easing: quintInOut }}
+>
+	<aside class="game-sidebar sidebar">
+		<h2>Sidebar</h2>
+		<button on:click={exitGame}>Leave the Game</button>
+	</aside>
+
+	<main class="game-screen" />
+	<aside class="secondary-sidebar sidebar">
+		<h2>Secondary Sidebar</h2>
+	</aside>
+</div>
 
 <style>
 	.game-ui {
 		background: var(--background-offset);
+		height: 100%;
+		display: grid;
+		grid-template-columns: 1fr 3fr 1fr;
+	}
+	.game-screen {
+		width: 100%;
+		background: var(--background);
+	}
+	.sidebar {
+		border: 1px solid var(--highlight-offset);
 	}
 </style>

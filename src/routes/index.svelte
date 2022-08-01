@@ -25,26 +25,28 @@
 </script>
 
 {#if $GameConnection.inGame === false}
-	<div
-		class="game-intro"
-		in:fade={{ duration: 500, delay: 400, easing: quintInOut }}
-		out:fade={{ duration: 500, easing: quintInOut }}
-	>
-		<p>
-			The murmur of bustling passengers wakes you from an uncomfortable sleep. The air smells of
-			saltwater, sweat, and rust.
-		</p>
-		<p>
-			You open your eyes and see the low metal ceiling of the ferry's passenger compartment.
-			Somewhere nearby a child starts to cry.
-		</p>
-		<p class="dialog">"You gonna lay there takin' up those seats all day?"</p>
-		<p>
-			You turn your head and wince from the pain of sleeping on the ferry's hard bench. An old man,
-			beard uneven and barely enough teeth to eat stands nearby and stares at you.
-		</p>
-		<button class="intro-button" on:click={initDemoGame}>Stand Up</button>
-	</div>
+	<main>
+		<section
+			class="game-intro"
+			in:fade={{ duration: 500, delay: 400, easing: quintInOut }}
+			out:fade={{ duration: 500, easing: quintInOut }}
+		>
+			<p>
+				The murmur of bustling passengers wakes you from an uncomfortable sleep. The air smells of
+				saltwater, sweat, and rust.
+			</p>
+			<p>
+				You open your eyes and see the low metal ceiling of the ferry's passenger compartment.
+				Somewhere nearby a child starts to cry.
+			</p>
+			<p class="dialog">"You gonna lay there takin' up those seats all day?"</p>
+			<p>
+				You turn your head and wince from the pain of sleeping on the ferry's hard bench. An old
+				man, beard uneven and barely enough teeth to eat stands nearby and stares at you.
+			</p>
+			<button class="intro-button" on:click={initDemoGame}>Stand Up</button>
+		</section>
+	</main>
 {/if}
 
 {#if $GameConnection.inGame === true}

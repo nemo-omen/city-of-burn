@@ -23,19 +23,21 @@
 	console.log(user);
 </script>
 
-<div class="profile">
-	<h2>Your Account</h2>
-	<strong>Username:</strong><span>{username}</span>
-	<strong>Email:</strong><span>{email}</span>
-	<strong>User since:</strong>
-	<span
-		>{new Date(createdAt).toLocaleDateString('en-us', {
-			month: 'long',
-			day: 'numeric',
-			year: 'numeric'
-		})}</span
-	>
-</div>
+<main>
+	<section class="profile">
+		<h2>Your Account</h2>
+		<strong>Username:</strong><span>{username}</span>
+		<strong>Email:</strong><span>{email}</span>
+		<strong>User since:</strong>
+		<span
+			>{new Date(createdAt).toLocaleDateString('en-us', {
+				month: 'long',
+				day: 'numeric',
+				year: 'numeric'
+			})}</span
+		>
+	</section>
+</main>
 
 <style>
 	.profile {

@@ -73,6 +73,11 @@ body {
   color: var(--foreground);
 }
 
+main {
+  width: var(--doc-width);
+  margin: 0 auto;
+}
+
 h1 {
   font-size: var(--step-3);
 }
