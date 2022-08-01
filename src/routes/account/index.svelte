@@ -25,13 +25,33 @@
 
 <div class="profile">
 	<h2>Your Account</h2>
-	<p>Username: {username}</p>
-	<p>Email: {email}</p>
-	<p>
-		User since: {new Date(createdAt).toLocaleDateString('en-us', {
+	<strong>Username:</strong><span>{username}</span>
+	<strong>Email:</strong><span>{email}</span>
+	<strong>User since:</strong>
+	<span
+		>{new Date(createdAt).toLocaleDateString('en-us', {
 			month: 'long',
 			day: 'numeric',
 			year: 'numeric'
-		})}
-	</p>
+		})}</span
+	>
 </div>
+
+<style>
+	.profile {
+		display: grid;
+		grid-template-rows: repeat(4, 1fr);
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1rem;
+		margin: 2rem auto;
+	}
+
+	.profile h2 {
+		grid-column: 1/3;
+	}
+
+	strong,
+	span {
+		font-size: var(--step-1);
+	}
+</style>
