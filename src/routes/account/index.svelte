@@ -1,7 +1,7 @@
 <script context="module" lang="ts">
 	import type { Load } from '@sveltejs/kit';
 
-	export const load = async ({ session, props }) => {
+	export const load: Load = async ({ session, props }) => {
 		if (!session.user) {
 			return {
 				status: 302,
