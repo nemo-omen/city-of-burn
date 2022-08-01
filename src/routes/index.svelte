@@ -1,40 +1,55 @@
 <script lang="ts">
 	import '$lib/style/global.css';
+	import { GameConnection } from '$lib/stores/GameConnection';
 	import { onMount } from 'svelte';
-	import { io } from 'socket.io-client';
+	import { fade } from 'svelte/transition';
+	import { quintInOut } from 'svelte/easing';
+	import GameUI from '$lib/components/GameUI.svelte';
+	import GameUi from '$lib/components/GameUI.svelte';
 
-	let socket;
+	const defaultCharacter = {
+		name: 'Another Person',
+		description: 'Just some unknown person.',
+		health: 6,
+		strength: 4,
+		location: 0,
+		user: undefined,
+		userId: undefined
+	};
 
-	function initDemoGame() {}
-
-	// onMount(async () => {
-	// 	if (import.meta.env.PROD) {
-	// 		socket = io('http://localhost:3000');
-	// 	} else {
-	// 		socket = io();
-	// 	}
-	// 	socket.on('connect', () => {
-	// 		console.log('Socket connected');
-	// 	});
-	// });
+	function initDemoGame() {
+		if ($GameConnection.inGame === false) {
+			$GameConnection.inGame = true;
+		}
+	}
 </script>
 
-<div class="game-intro">
-	<p>
-		The murmur of bustling passengers wakes you from an uncomfortable sleep. The air smells of
-		saltwater, sweat, and rust.
-	</p>
-	<p>
-		You open your eyes and see the low metal ceiling of the ferry's passenger compartment. Somewhere
-		nearby a child starts to cry.
-	</p>
-	<p class="dialog">"You gonna lay there takin' up those seats all day?"</p>
-	<p>
-		You turn your head and wince from the pain of sleeping on the ferry's hard bench. An old man,
-		beard uneven and barely enough teeth to eat stands nearby and stares at you.
-	</p>
-	<button class="intro-button">Stand Up</button>
-</div>
+{#if $GameConnection.inGame === false}
+	<div
+		class="game-intro"
+		in:fade={{ duration: 500, delay: 400, easing: quintInOut }}
+		out:fade={{ duration: 500, easing: quintInOut }}
+	>
+		<p>
+			The murmur of bustling passengers wakes you from an uncomfortable sleep. The air smells of
+			saltwater, sweat, and rust.
+		</p>
+		<p>
+			You open your eyes and see the low metal ceiling of the ferry's passenger compartment.
+			Somewhere nearby a child starts to cry.
+		</p>
+		<p class="dialog">"You gonna lay there takin' up those seats all day?"</p>
+		<p>
+			You turn your head and wince from the pain of sleeping on the ferry's hard bench. An old man,
+			beard uneven and barely enough teeth to eat stands nearby and stares at you.
+		</p>
+		<button class="intro-button" on:click={initDemoGame}>Stand Up</button>
+	</div>
+{/if}
+
+{#if $GameConnection.inGame === true}
+	<GameUi character={defaultCharacter} />
+{/if}
 
 <style>
 	.game-intro {
