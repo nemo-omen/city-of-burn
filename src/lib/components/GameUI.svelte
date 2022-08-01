@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { io } from 'socket.io-client';
+	import { io, Socket } from 'socket.io-client';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { quintInOut } from 'svelte/easing';
@@ -7,7 +7,7 @@
 
 	export let character = {};
 
-	let socket;
+	let socket: Socket;
 
 	function exitGame() {
 		socket.disconnect();
