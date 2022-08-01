@@ -19,13 +19,17 @@
 </script>
 
 <script lang="ts">
+	import { fade } from 'svelte/transition';
+	import { quintInOut } from 'svelte/easing';
 	export let user: string;
 </script>
 
-<main>
-	<section class="game">
-		<h2>Game</h2>
+<section
+	class="game"
+	in:fade={{ duration: 400, easing: quintInOut }}
+	out:fade={{ duration: 400, easing: quintInOut }}
+>
+	<h2>Game</h2>
 
-		<p>Welcome to the game, {user.username}</p>
-	</section>
-</main>
+	<p>Welcome to the game, {user.username}</p>
+</section>
