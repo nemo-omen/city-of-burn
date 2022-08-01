@@ -18,7 +18,7 @@
 
 			{#if $session.user}
 				<a href="/game">Play</a>
-				<a href={`/account/${$session.user.username}`}>Account</a>
+				<a href="/account">Account</a>
 				<a href="/auth/logout">Log Out</a>
 			{/if}
 		</nav>

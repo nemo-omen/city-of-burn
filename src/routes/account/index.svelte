@@ -1,8 +1,7 @@
-<!-- <script context="module" lang="ts">
+<script context="module" lang="ts">
 	import type { Load } from '@sveltejs/kit';
 
-	export const load = async ({ session, props, fetch }) => {
-		const userResponse = await
+	export const load = async ({ session, props }) => {
 		if (!session.user) {
 			return {
 				status: 302,
@@ -16,10 +15,12 @@
 			}
 		};
 	};
-</script> -->
+</script>
+
 <script lang="ts">
 	export let user;
 	const { username, email, createdAt } = user;
+	console.log(user);
 </script>
 
 <div class="profile">

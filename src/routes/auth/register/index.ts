@@ -55,10 +55,16 @@ export const POST: RequestHandler = async ({ request }) => {
       }
     });
 
+    console.log({ userRecord });
+
     return {
       status: 200,
       body: {
-        user: userRecord.username,
+        user: {
+          username: userRecord.username,
+          email: userRecord.email,
+          createdAt: userRecord.createdAt
+        },
         success: 'Success'
       },
       headers: {

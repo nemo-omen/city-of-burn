@@ -24,4 +24,4 @@
 
 <h2>Game</h2>
 
-<p>Welcome to the game, {user}</p>
+<p>Welcome to the game, {user.username}</p>

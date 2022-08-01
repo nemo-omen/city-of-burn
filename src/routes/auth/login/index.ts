@@ -69,10 +69,11 @@ export const POST: RequestHandler = async ({ request }) => {
     };
   }
 
+
   return {
     status: 200,
     body: {
-      user: user.username,
+      user: { username: user.username, email: user.email, createdAt: user.createdAt },
       success: 'Success',
     },
     headers: {
