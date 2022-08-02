@@ -11,11 +11,34 @@
 </script>
 
 <div class="message" bind:this={messageContainer}>
-	<p>{message.message}</p>
+	{#if message.type === 'dialog'}
+		<p>
+			<button class="game-entity-button">{message.from}</button> says
+			<span class="dialog">"{message.message}"</span>
+		</p>
+	{:else}
+		<p>{message.message}</p>
+	{/if}
 </div>
 
 <style>
 	.message {
 		font-size: var(--step-1);
+	}
+	.game-entity-button {
+		transition: all var(--transition-default);
+		background: transparent;
+		text-decoration: underline;
+		text-underline-offset: 0.125em;
+		display: inline-block;
+		border: none;
+		font-size: var(--step-1);
+		display: inline;
+		margin: 0;
+		padding: 0;
+	}
+
+	.game-entity-button:hover {
+		color: var(--accent);
 	}
 </style>
