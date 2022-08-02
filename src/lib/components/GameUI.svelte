@@ -129,6 +129,8 @@
 		overflow-y: auto;
 		overflow-anchor: none;
 		scroll-behavior: smooth;
+		color: var(--foreground-offset);
+		/* font-family: var(--serif); */
 	}
 	:global(.console > * + *) {
 		margin-top: var(--space-m);
