@@ -12,11 +12,12 @@
   --background: #00151b;
   --background-offset: #001b22;
   --foreground: #fffde8;
-  --foreground-offset: #ecead5;
+  --foreground-offset: #fff9bd;
 
   --accent-light: #fd4d82;
   --accent: #ec366c;
   --accent-offset: #d12357;
+
   --highlight-light: #00b6e9;
   --highlight: #0090b8;
   --highlight-offset: #006a88;
@@ -79,7 +80,6 @@ body {
 main {
   width: 100%;
   overflow: hidden;
-  position: relative;
 }
 
 h1 {

@@ -7,6 +7,7 @@
 
 	export let character = {};
 
+	let gameMessages = [];
 	let socket: Socket;
 
 	function exitGame() {
@@ -27,13 +28,18 @@
 		socket.on('connect', () => {
 			$GameConnection.connected = true;
 			console.log('Socket connected');
-			socket.send(character);
+			socket.emit('demo-game-init', character);
 		});
 
 		socket.on('disconnect', (reason) => {
 			$GameConnection.connected = false;
 			console.log('Socket disconnected');
 			closeUI();
+		});
+
+		socket.on('game-message', (message) => {
+			console.log(message);
+			gameMessages = [...gameMessages, message];
 		});
 	});
 </script>
@@ -43,42 +49,25 @@
 	in:fade={{ duration: 400, easing: quintInOut }}
 	out:fade={{ duration: 400, easing: quintInOut }}
 >
-	<aside class="game-sidebar sidebar">
-		<h2>Sidebar</h2>
-		<button on:click={exitGame}>Leave the Game</button>
-	</aside>
+	<aside class="sidebar" />
 
-	<div class="game-screen">
-		<form id="game-input" />
+	<div class="game-output">
+		<button on:click={exitGame}>Exit Game</button>
 	</div>
-	<aside class="secondary-sidebar sidebar">
-		<h2>Secondary Sidebar</h2>
-	</aside>
+
+	<aside class="sidebar" />
 </div>
 
 <style>
 	.game-ui {
 		background: var(--background);
 		height: 100%;
-		display: grid;
-		grid-template-columns: 1fr 3fr 1fr;
+		display: flex;
 	}
-	.game-screen {
-		width: 100%;
-		background: var(--background);
-		border: 0.25rem solid var(--background-offset);
-		border-top: none;
-		border-bottom: none;
+	.game-output {
+		flex-grow: 2.5;
 	}
 	.sidebar {
-		display: grid;
-	}
-
-	.game-sidebar {
-		grid-template-rows: 1fr auto;
-	}
-	.game-screen {
-		display: grid;
-		grid-template-rows: 1fr auto;
+		flex-grow: 1;
 	}
 </style>
