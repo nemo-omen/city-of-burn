@@ -22,7 +22,7 @@ const initialMessages = [
 		type: 'description',
 		from: 'game',
 		message:
-			"You turn your head and wince from the pain of sleeping on the ferry's hard bench. An old man, beard uneven and barely enough teeth to eat stands nearby and stares at you."
+			"You turn your head and wince from the pain of sleeping on the ferry's hard bench. An old man, beard uneven and, at most, three teeth stands nearby and stares at you."
 	},
 	{
 		type: 'description',

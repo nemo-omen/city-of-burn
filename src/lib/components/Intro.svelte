@@ -22,7 +22,7 @@
 	<p class="dialog">"You gonna lay there takin' up those seats all day?"</p>
 	<p>
 		You turn your head and wince from the pain of sleeping on the ferry's hard bench. An old man,
-		beard uneven and barely enough teeth to eat stands nearby and stares at you.
+		beard uneven and, at most, three teeth stands nearby and stares at you.
 	</p>
 	<button class="intro-button" on:click={initDemoGame}>Stand Up</button>
 </section>
