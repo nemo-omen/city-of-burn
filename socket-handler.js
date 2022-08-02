@@ -46,6 +46,16 @@ export default function injectSocketIO(server) {
 			for (const msg of initialMessages) {
 				socket.emit('game-message', msg);
 			}
+			setTimeout(() => {
+				for (const msg of initialMessages) {
+					socket.emit('game-message', msg);
+				}
+			}, 2000);
+			setTimeout(() => {
+				for (const msg of initialMessages) {
+					socket.emit('game-message', msg);
+				}
+			}, 4000);
 		});
 	});
 
