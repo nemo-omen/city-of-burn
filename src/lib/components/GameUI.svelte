@@ -29,7 +29,11 @@
 	 * TODO: Handle keyboard input in any part of the UI
 	 * window so we can use keyboard shortcuts as command
 	 * aliases. We can create formData and submit that
-	 * directly to the endpoint
+	 * directly to the endpoint.
+	 *
+	 * Note: You'll probably need to create another helper function in `$lib/api`
+	 * called something like `sendFormData` to handle this because the
+	 * `httpSend` function only handles full HTMLFormElements
 	 * @see: https://developer.mozilla.org/en-US/docs/Web/API/FormData/FormData
 	 * @param event
 	 */
