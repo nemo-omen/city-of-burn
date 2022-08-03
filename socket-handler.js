@@ -31,31 +31,18 @@ const initialMessages = [
 	}
 ];
 
+const wait = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
+
 export default function injectSocketIO(server) {
 	const io = new Server(server);
 
 	io.on('connection', (socket) => {
 		console.log('Connected socket: ', socket.id);
-
-		// socket.on('message', (message) => {
-		// 	console.log(`Message from ${socket.id}: `, message);
-		// });
-
 		socket.on('demo-game-init', (message) => {
 			console.log('Game init: ', message);
-			for (const msg of initialMessages) {
+			initialMessages.forEach((msg) => {
 				socket.emit('game-message', msg);
-			}
-			setTimeout(() => {
-				for (const msg of initialMessages) {
-					socket.emit('game-message', msg);
-				}
-			}, 2000);
-			setTimeout(() => {
-				for (const msg of initialMessages) {
-					socket.emit('game-message', msg);
-				}
-			}, 4000);
+			});
 		});
 	});
 

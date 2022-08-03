@@ -11,6 +11,8 @@
 	let gameMessages: Array<Record<string, any>> = [];
 	let socket: Socket;
 	let gameConsole: HTMLDivElement;
+	let inputMessage: string = '';
+	let consoleInput: HTMLInputElement;
 
 	function exitGame() {
 		socket.disconnect();
@@ -18,6 +20,25 @@
 
 	function closeUI() {
 		$GameConnection.inGame = false;
+	}
+
+	function sendMessage() {
+		const message = {
+			type: 'userMessage',
+			message: inputMessage
+		};
+
+		socket.send('user-message', message);
+
+		gameMessages = [...gameMessages, message];
+
+		consoleInput.value = '';
+	}
+
+	function handleKeyup(event: KeyboardEvent) {
+		if (event.key === 'Enter') {
+			sendMessage();
+		}
 	}
 
 	onMount(async () => {
@@ -60,10 +81,17 @@
 				<div class="scroll-anchor" />
 			</div>
 		</div>
-		<form class="game-input shrink-0">
-			<input type="text" name="command" id="command" class="grow-1" />
-			<button type="submit" class="shrink-0">Send</button>
-		</form>
+		<div class="game-input shrink-0" on:keyup={handleKeyup}>
+			<input
+				type="text"
+				name="command"
+				id="command"
+				class="grow-1"
+				bind:this={consoleInput}
+				bind:value={inputMessage}
+			/>
+			<button class="shrink-0">Send</button>
+		</div>
 	</div>
 
 	<aside class="sidebar shrink-0" id="main-sidebar">
@@ -119,8 +147,9 @@
 	.console {
 		display: flex;
 		flex-direction: column;
+		flex-flow: column;
 		position: absolute;
-		top: 0;
+		/* top: 0; */
 		left: 0;
 		right: 0;
 		bottom: 0;
@@ -130,10 +159,11 @@
 		overflow-anchor: none;
 		scroll-behavior: smooth;
 		color: var(--foreground-offset);
+		/* margin-bottom: 4rem; */
 		/* font-family: var(--serif); */
 	}
 	:global(.console > * + *) {
-		margin-top: var(--space-m);
+		margin-top: var(--space-s);
 	}
 	.scroll-anchor {
 		overflow-anchor: auto;
