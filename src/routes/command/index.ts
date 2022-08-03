@@ -2,6 +2,8 @@ export async function POST({ request }) {
   const form = await request.formData();
   const command = form.get('command');
 
+  console.log('command received: ', command);
+
   // TODO: Put together a set of acceptable commands
   // return status 400 (bad request) and an error
   // that says something like `You can't ${command}`
