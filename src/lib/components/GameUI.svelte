@@ -5,8 +5,11 @@
 	import { quintInOut } from 'svelte/easing';
 	import { GameConnection } from '$lib/stores/GameConnection';
 	import GameMessage from './GameMessage.svelte';
+	import { sendHttp } from '$lib/api';
 
 	export let character = {};
+
+	let error: string = '';
 
 	let gameMessages: Array<Record<string, any>> = [];
 	let socket: Socket;
@@ -22,23 +25,30 @@
 		$GameConnection.inGame = false;
 	}
 
-	function sendMessage() {
-		const message = {
-			type: 'userMessage',
-			message: inputMessage
-		};
-
-		socket.send('user-message', message);
-
-		gameMessages = [...gameMessages, message];
-
-		consoleInput.value = '';
+	/**
+	 * TODO: Handle keyboard input in any part of the UI
+	 * window so we can use keyboard shortcuts as command
+	 * aliases. We can create formData and submit that
+	 * directly to the endpoint
+	 * @see: https://developer.mozilla.org/en-US/docs/Web/API/FormData/FormData
+	 * @param event
+	 */
+	function handleControlKeys(event: KeyboardEvent) {
+		// console.log(event.key);
+		return;
 	}
 
-	function handleKeyup(event: KeyboardEvent) {
-		if (event.key === 'Enter') {
-			sendMessage();
+	async function submitCommand(event: SubmitEvent) {
+		const formElement = event.target as HTMLFormElement;
+		const response = await sendHttp(formElement);
+
+		if (response.error) {
+			error = response.error;
 		}
+
+		const { message } = response;
+		gameMessages = [...gameMessages, message];
+		formElement.reset();
 	}
 
 	onMount(async () => {
@@ -64,6 +74,10 @@
 			console.log(message);
 			gameMessages = [...gameMessages, message];
 		});
+
+		document.addEventListener('keyup', (event: KeyboardEvent) => {
+			handleControlKeys(event);
+		});
 	});
 </script>
 
@@ -81,7 +95,12 @@
 				<div class="scroll-anchor" />
 			</div>
 		</div>
-		<div class="game-input shrink-0" on:keyup={handleKeyup}>
+		<form
+			class="game-input shrink-0"
+			action="/command"
+			method="post"
+			on:submit|preventDefault={submitCommand}
+		>
 			<input
 				type="text"
 				name="command"
@@ -90,8 +109,8 @@
 				bind:this={consoleInput}
 				bind:value={inputMessage}
 			/>
-			<button class="shrink-0">Send</button>
-		</div>
+			<button class="shrink-0" type="submit">Send</button>
+		</form>
 	</div>
 
 	<aside class="sidebar shrink-0" id="main-sidebar">

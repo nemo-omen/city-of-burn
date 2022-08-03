@@ -1,5 +1,5 @@
 import { sveltekit } from '@sveltejs/kit/vite';
-import injectSocketIO from './socket-handler';
+import injectSocketIO from './server/socket-handler';
 
 /** @type {import('vite').UserConfig} */
 const config = {
