@@ -2,7 +2,7 @@
 	"name": "@city-of-burn/client",
 	"version": "0.0.0",
 	"prisma": {
-		"seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+		"seed": "node --loader ts-node prisma/seed.ts"
 	},
 	"scripts": {
 		"dev": "vite dev",
