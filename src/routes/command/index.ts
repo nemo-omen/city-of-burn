@@ -1,8 +1,10 @@
+import { gameInstance } from '../../../server/server.js';
+
 export async function POST({ request }) {
   const form = await request.formData();
   const command = form.get('command');
 
-  console.log('command received: ', command);
+  game.parseCommand();
 
   // TODO: Put together a set of acceptable commands
   // return status 400 (bad request) and an error
