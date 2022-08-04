@@ -25,7 +25,11 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import { quintInOut } from 'svelte/easing';
+
 	import CharacterSelection from '$lib/components/CharacterSelection.svelte';
+	import GameUi from '$lib/components/GameUI.svelte';
+	import { GameConnection } from '$lib/stores/GameConnection';
+
 	export let user: string;
 	export let characters = [];
 
@@ -33,6 +37,7 @@
 
 	function setSelectedCharacter(event) {
 		selectedCharacter = event.detail;
+		$GameConnection.inGame = true;
 	}
 	// console.log(characters);
 </script>
@@ -41,18 +46,10 @@
 	<div class="charactersheet">
 		<h2>Character Sheet</h2>
 	</div>
-{:else if selectedCharacter === undefined}
+{:else if $GameConnection.inGame === false}
 	<CharacterSelection {characters} on:selectcharacter={setSelectedCharacter} />
 {:else}
-	<section
-		class="game"
-		in:fade={{ duration: 400, easing: quintInOut }}
-		out:fade={{ duration: 400, easing: quintInOut }}
-	>
-		<h2>Game</h2>
-
-		<p>Welcome to the game, {selectedCharacter.name}</p>
-	</section>
+	<GameUi character={selectedCharacter} />
 {/if}
 
 <style>
