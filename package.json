@@ -2,7 +2,7 @@
 	"name": "@city-of-burn/client",
 	"version": "0.0.0",
 	"prisma": {
-		"seed": "node --loader ts-node prisma/seed.ts"
+		"seed": "node prisma/seed.js"
 	},
 	"scripts": {
 		"dev": "vite dev",
@@ -14,7 +14,7 @@
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check --plugin-search-dir=. . && eslint .",
 		"format": "prettier --write --plugin-search-dir=. .",
-		"db:push": "pnpx prisma db push"
+		"db:push": "pnpx prisma db push --accept-data-loss"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.22.2",

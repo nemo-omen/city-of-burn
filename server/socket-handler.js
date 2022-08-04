@@ -31,8 +31,6 @@ const initialMessages = [
 	}
 ];
 
-const wait = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
-
 export default function injectSocketIO(server) {
 	const io = new Server(server);
 

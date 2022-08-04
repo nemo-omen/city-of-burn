@@ -29,7 +29,6 @@ export const handle: Handle = async ({
 export const getSession: GetSession = ({ locals }) => {
   if (!locals.user) return {};
 
-
   return {
     user: {
       username: locals.user.username,
