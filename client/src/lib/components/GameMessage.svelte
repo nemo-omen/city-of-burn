@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte/types/runtime';
+	import { onMount } from 'svelte';
 	export let message: Record<string, any>;
 	let messageContainer: HTMLDivElement;
 

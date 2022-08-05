@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import { quintInOut } from 'svelte/easing';
-	import { createEventDispatcher } from 'svelte/types/runtime';
+	import { createEventDispatcher } from 'svelte';
 
 	const dispatch = createEventDispatcher();
 

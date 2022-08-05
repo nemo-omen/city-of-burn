@@ -1,12 +1,11 @@
 <script lang="ts">
 	import { io, Socket } from 'socket.io-client';
-	import { onMount } from 'svelte/types/runtime';
+	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { quintInOut } from 'svelte/easing';
 	import { GameConnection } from '$lib/stores/GameConnection';
 	import GameMessage from './GameMessage.svelte';
-	import { sendHttp } from '$lib/api';
-	import { currentCharacter } from '$lib/stores/GameConnection.ts';
+	import { currentCharacter } from '$lib/stores/GameConnection';
 
 	let error: string = '';
 
@@ -37,7 +36,6 @@
 	 * @param event
 	 */
 	function handleControlKeys(event: KeyboardEvent) {
-		// console.log(event.key);
 		return;
 	}
 
@@ -55,44 +53,34 @@
 			},
 			(response) => console.log('Response received: ', { response })
 		);
-		// sendSocket('command', );
-		// const response = await sendHttp(formElement);
-
-		// if (response.error) {
-		// 	error = response.error;
-		// }
-
-		// const { message } = response;
-		// gameMessages = [...gameMessages, message];
 		formElement.reset();
 	}
 
 	onMount(async () => {
 		if (import.meta.env.PROD) {
-		console.log('Connecting to SocketIO server instance');
-		socket = io('http://localhost:3000');
+			console.log('Connecting to SocketIO server instance');
+			socket = io('http://localhost:3000');
 
-		socket.on('connect', () => {
-			$GameConnection.connected = true;
-			console.log('Socket connected');
-			// console.log($currentCharacter);
-			socket.emit('demo-game-init', $currentCharacter);
-		});
+			socket.on('connect', () => {
+				$GameConnection.connected = true;
+				console.log('Socket connected');
+				socket.emit('demo-game-init', $currentCharacter);
+			});
 
-		socket.on('disconnect', (reason) => {
-			$GameConnection.connected = false;
-			console.log('Socket disconnected');
-			closeUI();
-		});
+			socket.on('disconnect', (reason) => {
+				$GameConnection.connected = false;
+				console.log('Socket disconnected');
+				closeUI();
+			});
 
-		socket.on('game-message', (message) => {
-			// console.log(message);
-			gameMessages = [...gameMessages, message];
-		});
+			socket.on('game-message', (message) => {
+				gameMessages = [...gameMessages, message];
+			});
 
-		document.addEventListener('keyup', (event: KeyboardEvent) => {
-			handleControlKeys(event);
-		});
+			document.addEventListener('keyup', (event: KeyboardEvent) => {
+				handleControlKeys(event);
+			});
+		}
 	});
 </script>
 

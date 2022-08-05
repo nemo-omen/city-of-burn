@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-	import type { Load } from '@sveltejs/kit/types';
+	import type { Load } from '@sveltejs/kit';
 
 	export const load: Load = async ({ session }) => {
 		if (!session.user) {
@@ -23,9 +23,6 @@
 </script>
 
 <script lang="ts">
-	import { fade } from '../../../client/node_modules/.pnpm/svelte@3.49.0/node_modules/svelte/transition';
-	import { quintInOut } from '../../../client/node_modules/.pnpm/svelte@3.49.0/node_modules/svelte/easing';
-
 	import CharacterSelection from '$lib/components/CharacterSelection.svelte';
 	import GameUi from '$lib/components/GameUI.svelte';
 	import { GameConnection, currentCharacter } from '$lib/stores/GameConnection';

@@ -11,7 +11,7 @@ const config = {
 		adapter: adapter({
 			out: 'build',
 			procompress: false,
-			envPrefox: ''
+			envPrefix: ''
 		})
 	}
 };

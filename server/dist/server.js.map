@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/server.js"],
+  "sourcesContent": ["import http from 'http';\nimport injectSocketIO from './socket-handler.js';\nimport express from 'express';\nimport cors from 'cors';\n\nconst app = express();\nconst server = http.createServer(app);\n\ninjectSocketIO(server);\n\n// app.use(handler);\napp.use(cors);\n\napp.get('/healthcheck', (req, res) => {\n\tres.end('ok');\n});\n\napp.listen(3000, () => {\n\tconsole.log('Custom express server listening at http://localhost:3000');\n});\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;AAAA,kBAAiB;AACjB,4BAA2B;AAC3B,qBAAoB;AACpB,kBAAiB;AAEjB,MAAM,UAAM,eAAAA,SAAQ;AACpB,MAAM,SAAS,YAAAC,QAAK,aAAa,GAAG;AAAA,IAEpC,sBAAAC,SAAe,MAAM;AAGrB,IAAI,IAAI,YAAAC,OAAI;AAEZ,IAAI,IAAI,gBAAgB,CAAC,KAAK,QAAQ;AACrC,MAAI,IAAI,IAAI;AACb,CAAC;AAED,IAAI,OAAO,KAAM,MAAM;AACtB,UAAQ,IAAI,0DAA0D;AACvE,CAAC;",
+  "names": ["express", "http", "injectSocketIO", "cors"]
+}

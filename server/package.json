@@ -2,7 +2,7 @@
   "name": "@city-of-burn/server",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
     "dev": "nodemon",
     "build": "etsc",
