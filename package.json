@@ -9,6 +9,7 @@
 		"build": "vite build",
 		"package": "svelte-kit package",
 		"preview": "vite preview",
+		"start": "bun run ./server/server.js",
 		"test": "playwright test",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",

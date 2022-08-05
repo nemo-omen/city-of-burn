@@ -33,7 +33,11 @@ const initialMessages = [
 ];
 
 export default function injectSocketIO(server) {
-	const io = new Server(server);
+	const io = new Server(server, {
+		cors: {
+			origin: '*'
+		}
+	});
 	const game = new Game();
 
 	io.on('connection', (socket) => {
@@ -55,6 +59,4 @@ export default function injectSocketIO(server) {
 			});
 		});
 	});
-
-	console.log('SocketIO injected');
 }
