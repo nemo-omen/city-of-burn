@@ -1,0 +1,21 @@
+{
+  "name": "@city-of-burn/server",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon",
+    "build": "etsc",
+    "start": "node dist/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "18.6.3",
+    "esbuild": "^0.14.53",
+    "esbuild-node-tsc": "^1.8.8",
+    "nodemon": "^2.0.19",
+    "typescript": "^4.7.4"
+  }
+}

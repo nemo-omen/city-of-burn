@@ -69,12 +69,8 @@
 
 	onMount(async () => {
 		if (import.meta.env.PROD) {
-			console.log('Connecting to production server instance');
-			socket = io('http://localhost:3000');
-		} else {
-			console.log('Connecting to dev server instance');
-			socket = io();
-		}
+		console.log('Connecting to SocketIO server instance');
+		socket = io('http://localhost:3000');
 
 		socket.on('connect', () => {
 			$GameConnection.connected = true;
