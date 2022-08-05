@@ -1,4 +1,5 @@
 import { Server } from 'socket.io';
+import { Game } from '../game/Game.ts';
 
 const initialMessages = [
 	{
@@ -33,13 +34,24 @@ const initialMessages = [
 
 export default function injectSocketIO(server) {
 	const io = new Server(server);
+	const game = new Game();
 
 	io.on('connection', (socket) => {
 		console.log('Connected socket: ', socket.id);
+
 		socket.on('demo-game-init', (message) => {
 			console.log('Game init: ', message);
 			initialMessages.forEach((msg) => {
 				socket.emit('game-message', msg);
+			});
+		});
+
+		socket.on('command', (message, callback) => {
+			console.log(`Command received from: `, message.characterId);
+			game.parseCommand(message.command);
+			callback({
+				ok: true,
+				status: 200
 			});
 		});
 	});

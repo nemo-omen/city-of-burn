@@ -5,7 +5,7 @@
 		if (session.user) {
 			return {
 				status: 302,
-				redirect: '/game'
+				redirect: '/play'
 			};
 		}
 
@@ -16,8 +16,6 @@
 <script lang="ts">
 	import { session } from '$app/stores';
 	import { sendHttp } from '$lib/api';
-	import { fade } from 'svelte/transition';
-	import { quintInOut } from 'svelte/easing';
 
 	export let error: string;
 

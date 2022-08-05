@@ -5,7 +5,7 @@
 		if (session.user) {
 			return {
 				status: 302,
-				redirect: '/game'
+				redirect: '/play'
 			};
 		}
 

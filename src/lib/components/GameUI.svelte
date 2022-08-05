@@ -6,8 +6,7 @@
 	import { GameConnection } from '$lib/stores/GameConnection';
 	import GameMessage from './GameMessage.svelte';
 	import { sendHttp } from '$lib/api';
-
-	export let character = {};
+	import { currentCharacter } from '$lib/stores/GameConnection.ts';
 
 	let error: string = '';
 
@@ -44,14 +43,27 @@
 
 	async function submitCommand(event: SubmitEvent) {
 		const formElement = event.target as HTMLFormElement;
-		const response = await sendHttp(formElement);
+		const formData = new FormData(formElement);
 
-		if (response.error) {
-			error = response.error;
-		}
+		console.log($currentCharacter.id);
 
-		const { message } = response;
-		gameMessages = [...gameMessages, message];
+		const response = socket.emit(
+			'command',
+			{
+				characterId: $currentCharacter.id,
+				command: formData.get('command')
+			},
+			(response) => console.log('Response received: ', { response })
+		);
+		// sendSocket('command', );
+		// const response = await sendHttp(formElement);
+
+		// if (response.error) {
+		// 	error = response.error;
+		// }
+
+		// const { message } = response;
+		// gameMessages = [...gameMessages, message];
 		formElement.reset();
 	}
 
@@ -67,7 +79,8 @@
 		socket.on('connect', () => {
 			$GameConnection.connected = true;
 			console.log('Socket connected');
-			socket.emit('demo-game-init', character);
+			// console.log($currentCharacter);
+			socket.emit('demo-game-init', $currentCharacter);
 		});
 
 		socket.on('disconnect', (reason) => {
@@ -77,7 +90,7 @@
 		});
 
 		socket.on('game-message', (message) => {
-			console.log(message);
+			// console.log(message);
 			gameMessages = [...gameMessages, message];
 		});
 

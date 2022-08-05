@@ -28,18 +28,15 @@
 
 	import CharacterSelection from '$lib/components/CharacterSelection.svelte';
 	import GameUi from '$lib/components/GameUI.svelte';
-	import { GameConnection } from '$lib/stores/GameConnection';
+	import { GameConnection, currentCharacter } from '$lib/stores/GameConnection';
 
 	export let user: string;
 	export let characters = [];
 
-	let selectedCharacter;
-
 	function setSelectedCharacter(event) {
-		selectedCharacter = event.detail;
+		$currentCharacter = event.detail;
 		$GameConnection.inGame = true;
 	}
-	// console.log(characters);
 </script>
 
 {#if characters.length === 0}
@@ -49,7 +46,7 @@
 {:else if $GameConnection.inGame === false}
 	<CharacterSelection {characters} on:selectcharacter={setSelectedCharacter} />
 {:else}
-	<GameUi character={selectedCharacter} />
+	<GameUi />
 {/if}
 
 <style>
