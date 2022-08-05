@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-	import type { Load } from '@sveltejs/kit';
+	import type { Load } from '@sveltejs/kit/types';
 
 	export const load: Load = ({ session, props }) => {
 		if (session.user) {

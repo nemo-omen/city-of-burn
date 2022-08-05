@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '$lib/style/global.css';
 	import { GameConnection } from '$lib/stores/GameConnection';
-	import { onMount } from 'svelte';
+	import { onMount } from 'svelte/types/runtime';
 	import { fade } from 'svelte/transition';
 	import { quintInOut } from 'svelte/easing';
 	import GameUI from '$lib/components/GameUI.svelte';

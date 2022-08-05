@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { io, Socket } from 'socket.io-client';
-	import { onMount } from 'svelte';
+	import { onMount } from 'svelte/types/runtime';
 	import { fade } from 'svelte/transition';
 	import { quintInOut } from 'svelte/easing';
 	import { GameConnection } from '$lib/stores/GameConnection';
