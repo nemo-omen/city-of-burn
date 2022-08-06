@@ -71,13 +71,30 @@ importers:
       typescript: 4.7.4
       vite: 3.0.4
 
-  server:
+  core:
     specifiers:
       '@types/node': 18.6.3
       esbuild: ^0.14.53
       esbuild-node-tsc: ^1.8.8
       nodemon: ^2.0.19
       typescript: ^4.7.4
+    devDependencies:
+      '@types/node': 18.6.3
+      esbuild: 0.14.53
+      esbuild-node-tsc: 1.8.8_7x2oirycc2gq3ttpc7ucqitaye
+      nodemon: 2.0.19
+      typescript: 4.7.4
+
+  server:
+    specifiers:
+      '@city-of-burn/core': workspace:^0.0.0
+      '@types/node': 18.6.3
+      esbuild: ^0.14.53
+      esbuild-node-tsc: ^1.8.8
+      nodemon: ^2.0.19
+      typescript: ^4.7.4
+    dependencies:
+      '@city-of-burn/core': link:../core
     devDependencies:
       '@types/node': 18.6.3
       esbuild: 0.14.53
@@ -1718,7 +1735,7 @@ packages:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 3.1.2
+      minimatch: 3.0.5
       once: 1.4.0
       path-is-absolute: 1.0.1
     dev: true
@@ -3272,11 +3289,6 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /yargs-parser/21.1.1:
-    resolution: {integrity: sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==}
-    engines: {node: '>=12'}
-    dev: true
-
   /yargs/17.5.1:
     resolution: {integrity: sha512-t6YAJcxDkNX7NFYiVtKvWUz8l+PaKTLiL63mJYWR2GnHq2gjEWISzsLp9wg3aY36dY1j+gfIEL3pIF+XlJJfbA==}
     engines: {node: '>=12'}
@@ -3287,7 +3299,7 @@ packages:
       require-directory: 2.1.1
       string-width: 4.2.3
       y18n: 5.0.8
-      yargs-parser: 21.1.1
+      yargs-parser: 21.0.1
     dev: true
 
   /yn/3.1.1:

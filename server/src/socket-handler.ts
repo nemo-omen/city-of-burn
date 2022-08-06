@@ -1,7 +1,6 @@
 import { Server } from 'socket.io';
-// import { Game } from '../game/Game.ts';
-
-const initialMessages = [
+import { Game } from '@city-of-burn/core';
+export const initialMessages = [
 	{
 		type: 'description',
 		from: 'game',
@@ -32,13 +31,14 @@ const initialMessages = [
 	}
 ];
 
-export default function injectSocketIO(server) {
+export function startSocketServer(server) {
 	const io = new Server(server, {
 		cors: {
 			origin: '*'
 		}
 	});
-	// const game = new Game();
+
+	const game = new Game();
 
 	io.on('connection', (socket) => {
 		console.log('Connected socket: ', socket.id);

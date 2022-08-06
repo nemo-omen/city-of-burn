@@ -18,10 +18,12 @@ var __copyProps = (to, from, except, desc) => {
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 var socket_handler_exports = {};
 __export(socket_handler_exports, {
-  default: () => injectSocketIO
+  initialMessages: () => initialMessages,
+  startSocketServer: () => startSocketServer
 });
 module.exports = __toCommonJS(socket_handler_exports);
 var import_socket = require("socket.io");
+var import_core = require("@city-of-burn/core");
 const initialMessages = [
   {
     type: "description",
@@ -49,12 +51,13 @@ const initialMessages = [
     message: "You stand up."
   }
 ];
-function injectSocketIO(server) {
+function startSocketServer(server) {
   const io = new import_socket.Server(server, {
     cors: {
       origin: "*"
     }
   });
+  const game = new import_core.Game();
   io.on("connection", (socket) => {
     console.log("Connected socket: ", socket.id);
     socket.on("demo-game-init", (message) => {
@@ -74,5 +77,8 @@ function injectSocketIO(server) {
   });
 }
 // Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {});
+0 && (module.exports = {
+  initialMessages,
+  startSocketServer
+});
 //# sourceMappingURL=socket-handler.js.map

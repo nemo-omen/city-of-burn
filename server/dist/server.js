@@ -17,18 +17,15 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
   mod
 ));
-var import_http = __toESM(require("http"));
-var import_socket_handler = __toESM(require("./socket-handler.js"));
+var import_http = require("http");
 var import_express = __toESM(require("express"));
 var import_cors = __toESM(require("cors"));
+var import_socket_handler = require("./socket-handler");
 const app = (0, import_express.default)();
-const server = import_http.default.createServer(app);
-(0, import_socket_handler.default)(server);
+const httpServer = (0, import_http.createServer)(app);
+(0, import_socket_handler.startSocketServer)(httpServer);
 app.use(import_cors.default);
-app.get("/healthcheck", (req, res) => {
-  res.end("ok");
-});
-app.listen(3e3, () => {
-  console.log("Custom express server listening at http://localhost:3000");
+httpServer.listen(3e3, () => {
+  console.log("Server listening at http://localhost:3000");
 });
 //# sourceMappingURL=server.js.map

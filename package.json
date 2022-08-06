@@ -3,13 +3,14 @@
   "version": "0.0.0",
   "description": "",
   "scripts": {
-    "dev": "nx run-many --target=dev --all"
+    "dev": "npx nx run-many --target=dev --all"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "workspaces": [
     "client",
+    "core",
     "server"
   ],
   "devDependencies": {

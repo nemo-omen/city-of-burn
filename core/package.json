@@ -1,24 +1,24 @@
 {
-  "name": "@city-of-burn/server",
+  "name": "@city-of-burn/core",
   "version": "0.0.0",
   "description": "",
-  "main": "src/server.js",
-  "scripts": {
-    "dev": "nodemon",
-    "build": "etsc",
-    "start": "node dist/server.js"
-  },
+  "main": "dist/index.js",
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "dev": "nodemon",
+    "build": "etsc",
+    "run": "node dist/index.js"
+  },
   "devDependencies": {
     "@types/node": "18.6.3",
     "esbuild": "^0.14.53",
     "esbuild-node-tsc": "^1.8.8",
     "nodemon": "^2.0.19",
     "typescript": "^4.7.4"
-  },
-  "dependencies": {
-    "@city-of-burn/core": "workspace:^0.0.0"
   }
 }

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/Game.ts"],
+  "sourcesContent": ["// Nope, too early\n// work on some models first so\n// you know what you need\nexport class Game {\n  messageCounter = 0;\n\n  parseCommand(command: string) {\n    console.log(`command #${++this.messageCounter} received: ${command}.`);\n  }\n}"],
+  "mappings": ";;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAGO,MAAM,KAAK;AAAA,EAChB,iBAAiB;AAAA,EAEjB,aAAa,SAAiB;AAC5B,YAAQ,IAAI,YAAY,EAAE,KAAK,4BAA4B,UAAU;AAAA,EACvE;AACF;",
+  "names": []
+}

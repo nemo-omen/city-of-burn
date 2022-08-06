@@ -57,30 +57,28 @@
 	}
 
 	onMount(async () => {
-		if (import.meta.env.PROD) {
-			console.log('Connecting to SocketIO server instance');
-			socket = io('http://localhost:3000');
+		console.log('Connecting to SocketIO server instance');
+		socket = io('http://localhost:3000');
 
-			socket.on('connect', () => {
-				$GameConnection.connected = true;
-				console.log('Socket connected');
-				socket.emit('demo-game-init', $currentCharacter);
-			});
+		socket.on('connect', () => {
+			$GameConnection.connected = true;
+			console.log('Socket connected');
+			socket.emit('demo-game-init', $currentCharacter);
+		});
 
-			socket.on('disconnect', (reason) => {
-				$GameConnection.connected = false;
-				console.log('Socket disconnected');
-				closeUI();
-			});
+		socket.on('disconnect', (reason) => {
+			$GameConnection.connected = false;
+			console.log('Socket disconnected');
+			closeUI();
+		});
 
-			socket.on('game-message', (message) => {
-				gameMessages = [...gameMessages, message];
-			});
+		socket.on('game-message', (message) => {
+			gameMessages = [...gameMessages, message];
+		});
 
-			document.addEventListener('keyup', (event: KeyboardEvent) => {
-				handleControlKeys(event);
-			});
-		}
+		document.addEventListener('keyup', (event: KeyboardEvent) => {
+			handleControlKeys(event);
+		});
 	});
 </script>
 
