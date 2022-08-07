@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/Location.ts"],
+  "sourcesContent": ["export type Location = {\n  area: number;\n  room: number;\n};"],
+  "mappings": ";;;;;;;;;;;;;;AAAA;AAAA;",
+  "names": []
+}

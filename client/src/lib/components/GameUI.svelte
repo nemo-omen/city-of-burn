@@ -21,6 +21,7 @@
 
 	function closeUI() {
 		$GameConnection.inGame = false;
+		$currentCharacter = {};
 	}
 
 	/**

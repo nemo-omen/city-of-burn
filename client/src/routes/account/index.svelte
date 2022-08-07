@@ -41,6 +41,7 @@
 
 <style>
 	.profile {
+		width: var(--doc-width);
 		display: grid;
 		grid-template-rows: repeat(4, 1fr);
 		grid-template-columns: repeat(2, 1fr);

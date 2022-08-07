@@ -58,10 +58,13 @@ function startSocketServer(server) {
     }
   });
   const game = new import_core.Game();
+  game.Updated.on((data) => console.log("Data emitted from Game onupdate event: ", data));
+  game.update({ hello: "world" });
   io.on("connection", (socket) => {
     console.log("Connected socket: ", socket.id);
-    socket.on("demo-game-init", (message) => {
-      console.log("Game init: ", message);
+    socket.on("demo-game-init", (character) => {
+      character.socketId = socket.id;
+      game.join(character);
       initialMessages.forEach((msg) => {
         socket.emit("game-message", msg);
       });
@@ -73,6 +76,9 @@ function startSocketServer(server) {
         ok: true,
         status: 200
       });
+    });
+    socket.on("disconnect", () => {
+      game.disconnectSocket(socket.id);
     });
   });
 }

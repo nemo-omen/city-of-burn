@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/Actor.ts"],
+  "sourcesContent": ["import { Entity } from './index';\n\nexport class Actor extends Entity {\n  constructor () {\n    super();\n  }\n}"],
+  "mappings": ";;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,mBAAuB;AAEhB,MAAM,cAAc,oBAAO;AAAA,EAChC,cAAe;AACb,UAAM;AAAA,EACR;AACF;",
+  "names": []
+}

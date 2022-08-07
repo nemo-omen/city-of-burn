@@ -21,10 +21,52 @@ __export(Game_exports, {
   Game: () => Game
 });
 module.exports = __toCommonJS(Game_exports);
+class Channel {
+  name;
+  callback;
+  constructor(name, callback) {
+    this.name = name;
+    this.callback = callback;
+  }
+}
+class Character {
+}
+class LiteEvent {
+  handlers = [];
+  on(handler) {
+    this.handlers.push(handler);
+  }
+  off(handler) {
+    this.handlers = this.hhandlers.filter((h) => h !== handler);
+  }
+  trigger(data) {
+    this.handlers.slice(0).forEach((h) => h(data));
+  }
+  expose() {
+    return this;
+  }
+}
 class Game {
   messageCounter = 0;
+  characters = /* @__PURE__ */ new Map();
+  onUpdate = new LiteEvent();
+  get Updated() {
+    return this.onUpdate.expose();
+  }
   parseCommand(command) {
     console.log(`command #${++this.messageCounter} received: ${command}.`);
+  }
+  update(data) {
+    this.onUpdate.trigger(data);
+  }
+  join(character) {
+    this.characters.set(character.name, character);
+  }
+  disconnectSocket(socketId) {
+    const charArray = Array.from(this.characters.values());
+    const disconnectedCharacter = charArray.filter((character) => character.socketId === socketId)[0];
+    this.characters.delete(disconnectedCharacter.name);
+    console.log(this.characters);
   }
 }
 // Annotate the CommonJS export names for ESM import in node:

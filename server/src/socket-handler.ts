@@ -40,11 +40,19 @@ export function startSocketServer(server) {
 
 	const game = new Game();
 
+	game.Updated.on((data: unknown) => console.log('Data emitted from Game onupdate event: ', data));
+
+	game.update({ hello: 'world' });
+
 	io.on('connection', (socket) => {
 		console.log('Connected socket: ', socket.id);
 
-		socket.on('demo-game-init', (message) => {
-			console.log('Game init: ', message);
+		socket.on('demo-game-init', (character) => {
+			character.socketId = socket.id;
+
+			game.join(character);
+
+			// console.log(game);
 			initialMessages.forEach((msg) => {
 				socket.emit('game-message', msg);
 			});
@@ -58,5 +66,10 @@ export function startSocketServer(server) {
 				status: 200
 			});
 		});
+
+		socket.on('disconnect', () => {
+			game.disconnectSocket(socket.id);
+		});
+
 	});
 }

@@ -16,23 +16,22 @@ var __copyProps = (to, from, except, desc) => {
   return to;
 };
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var src_exports = {};
-__export(src_exports, {
-  Actor: () => import_Actor.Actor,
-  Entity: () => import_Entity.Entity,
-  Game: () => import_Game.Game,
-  Location: () => import_Location.Location
+var Entity_exports = {};
+__export(Entity_exports, {
+  Entity: () => Entity
 });
-module.exports = __toCommonJS(src_exports);
-var import_Game = require("./Game");
-var import_Entity = require("./Entity");
-var import_Actor = require("./Actor");
-var import_Location = require("./Location");
+module.exports = __toCommonJS(Entity_exports);
+class Entity {
+  id;
+  name;
+  description;
+  location = { area: 0, room: 0 };
+  matchName(input) {
+    return this.name.startsWith(input);
+  }
+}
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  Actor,
-  Entity,
-  Game,
-  Location
+  Entity
 });
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=Entity.js.map
