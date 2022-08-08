@@ -36,6 +36,10 @@ After spending a weekend reading about implementing a simple ECS approach, I kno
 
 #### Currently Under Consideration
 
+[Javelin](https://javelin.games/ecs/) - a whole-ass set of packages for making multiplayer games. Could be just what I need. Nice docs.
+
+[Becsy](https://lastolivegames.github.io/becsy/) - multi-threaded ECS for Typescript. Very nice docs!
+
 [geotic](https://github.com/ddmills/geotic) - seems mature and stable. Docs are a single `README.md` but they seem to be thorough. The library also looks to have a lot of functionality.
 - See a roguelike tutorial that uses geotic here: [Javascript rewrite of the Complete Roguelike Tutorial](https://github.com/luetkemj/jsrlt)
 
