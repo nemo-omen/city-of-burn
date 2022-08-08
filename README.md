@@ -35,7 +35,8 @@ I have no idea how to handle Game instantiation. I'm guessing this will essentia
 After spending a weekend reading about implementing a simple ECS approach, I know I probably don't want to do it by myself. I'm going to try out a couple of ECS libraries with priority given to documentation, developer experience, and performance (in that order). This is probably going to be a pretty small game, so a performance difference of a couple hundred (usually less) milliseconds isn't going to bother me as much as not understanding how to use a library will.
 
 #### Currently Under Consideration
-[geotic](https://github.com/ddmills/geotic) - seems mature and stable. Docs are a little on th light side but that might also be good.
+
+[geotic](https://github.com/ddmills/geotic) - seems mature and stable. Docs are a little on the light side but that might also be good.
 
 [harmony-ecs](https://github.com/3mcd/harmony-ecs) - good docs
 
