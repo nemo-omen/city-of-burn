@@ -39,6 +39,8 @@ After spending a weekend reading about implementing a simple ECS approach, I kno
 [geotic](https://github.com/ddmills/geotic) - seems mature and stable. Docs are a single `README.md` but they seem to be thorough. The library also looks to have a lot of functionality.
 - See a roguelike tutorial that uses geotic here: [Javascript rewrite of the Complete Roguelike Tutorial](https://github.com/luetkemj/jsrlt)
 
+[Miski](https://github.com/phughesmcr/Miski) - Includes archetypes, API documentation. Still pretty new, though, and docs are a little light. API is likely not stable, but looks promising.
+
 [harmony-ecs](https://github.com/3mcd/harmony-ecs) - good docs
 
 [miniplex](https://github.com/hmans/miniplex) - easy to understand
@@ -46,5 +48,6 @@ After spending a weekend reading about implementing a simple ECS approach, I kno
 [uecs](https://github.com/jprochazk/uecs) - small lib and API, also small docs, could be easy
 
 **maybe?**
+
 
 [wolf-ecs](https://github.com/EnderShadow8/wolf-ecs) - function based, might be easy to use but docs arekind of sparse
