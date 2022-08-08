@@ -36,7 +36,8 @@ After spending a weekend reading about implementing a simple ECS approach, I kno
 
 #### Currently Under Consideration
 
-[geotic](https://github.com/ddmills/geotic) - seems mature and stable. Docs are a little on the light side but that might also be good.
+[geotic](https://github.com/ddmills/geotic) - seems mature and stable. Docs are a single `README.md` but they seem to be thorough. The library also looks to have a lot of functionality.
+- See a roguelike tutorial that uses geotic here: [Javascript rewrite of the Complete Roguelike Tutorial](https://github.com/luetkemj/jsrlt)
 
 [harmony-ecs](https://github.com/3mcd/harmony-ecs) - good docs
 
