@@ -1,6 +1,6 @@
 ## Initial dev setup
 
-After cloning this repo create a .env file with `DATABASE_URL="file:./dev.db"` and run `pnpm run db:push` if you're cloning for the first time.
+After cloning this repo create a .env file with `DATABASE_URL="file:./client/dev.db"` and run `pnpm run db:push` if you're cloning for the first time.
 
 
 ## Some initial thoughts
