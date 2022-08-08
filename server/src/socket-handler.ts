@@ -1,5 +1,5 @@
 import { Server } from 'socket.io';
-import { Game } from '@city-of-burn/core';
+import { Game, Component, AttributeComponent, UpdateEvent } from '@city-of-burn/core';
 export const initialMessages = [
 	{
 		type: 'description',
@@ -39,10 +39,16 @@ export function startSocketServer(server) {
 	});
 
 	const game = new Game();
+	const ent = game.addEntity();
 
-	game.Updated.on((data: unknown) => console.log('Data emitted from Game onupdate event: ', data));
+	ent.addComponent(new AttributeComponent('Health', 60));
+	ent.addComponent(new AttributeComponent('Strength', 30));
+	ent.addComponent(new AttributeComponent('Stamina', 70));
+	console.log(ent);
+	const entHealth = ent.components.get('Health');
+	entHealth.onupdate((event: UpdateEvent) => console.log(event as UpdateEvent));
 
-	game.update({ hello: 'world' });
+	entHealth.update(70);
 
 	io.on('connection', (socket) => {
 		console.log('Connected socket: ', socket.id);
@@ -51,6 +57,8 @@ export function startSocketServer(server) {
 			character.socketId = socket.id;
 
 			game.join(character);
+			const someEntity = game.addEntity();
+
 
 			// console.log(game);
 			initialMessages.forEach((msg) => {

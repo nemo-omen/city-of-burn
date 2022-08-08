@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../src/Entity.ts"],
-  "sourcesContent": ["import { Location } from './index';\n\nexport class Entity {\n  id: string;\n  name: string;\n  description: string;\n\n  location: Location = { area: 0, room: 0 };\n\n  matchName(input: string) {\n    return this.name.startsWith(input);\n  }\n}"],
-  "mappings": ";;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAEO,MAAM,OAAO;AAAA,EAClB;AAAA,EACA;AAAA,EACA;AAAA,EAEA,WAAqB,EAAE,MAAM,GAAG,MAAM,EAAE;AAAA,EAExC,UAAU,OAAe;AACvB,WAAO,KAAK,KAAK,WAAW,KAAK;AAAA,EACnC;AACF;",
-  "names": []
-}

@@ -1,8 +1,9 @@
+export { ECS } from './ECS';
 export { Game } from './Game';
 export { Entity } from './Entity';
-export { Actor } from './Actor';
 
+// Components
+export { Component, AttributeComponent } from './components/index';
 
 // Types
-
-export { Location } from './Location';
+export { Location, UpdateEvent } from './types/index';

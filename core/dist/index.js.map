@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../src/index.ts"],
-  "sourcesContent": ["export { Game } from './Game';\nexport { Entity } from './Entity';\nexport { Actor } from './Actor';\n\n\n// Types\n\nexport { Location } from './Location';"],
-  "mappings": ";;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,kBAAqB;AACrB,oBAAuB;AACvB,mBAAsB;AAKtB,sBAAyB;",
-  "names": []
-}
