@@ -34,6 +34,7 @@ const loopPeriod = 1;
 
 const hitUpdate = () => {
   defaultActor.harm.use(5);
+  if (!defaultActor.inBattle) defaultActor.inBattle = true;
   console.log('harmed health: ', defaultActor.health);
   checkDead();
 };

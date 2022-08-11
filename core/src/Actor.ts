@@ -21,6 +21,7 @@ export class Actor extends Entity {
   will = 0;
   heal: Heal;
   harm: Harm;
+  inBattle = false;
   constructor (options: ActorOptions) {
     super();
 
@@ -55,6 +56,17 @@ export class Actor extends Entity {
   }
 
   isFullyHealed() {
-    return this.health === this.maxHealth;
+    if (this.inBattle) {
+      return this.health === this.maxHealth;
+    }
+    return false;
   }
+
+  takeAttack(damage: number) {
+    console.log(`${this.name} has been attacked!`);
+    // todo: some function that determines whether
+    // a dodge is made
+    this.harm.use(damage);
+  }
+
 }
