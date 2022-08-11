@@ -20,5 +20,8 @@
     "esbuild-node-tsc": "^1.8.8",
     "nodemon": "^2.0.19",
     "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "accurate-game-loop": "^2.0.0"
   }
 }

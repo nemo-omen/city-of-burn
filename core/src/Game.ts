@@ -2,8 +2,8 @@ import { Character, Actor, Entity, Location, Component } from './index';
 
 export class Game {
   messageCounter = 0;
-  entityCount = 0;
-  entities: Entity[] = [];
+  actorCount = 0;
+  actors: Actor[] = [];
   public characters: Map<string, Character> = new Map();
 
   parseCommand(command: string) {
@@ -21,10 +21,8 @@ export class Game {
     console.log(this.characters);
   }
 
-  addEntity(): Entity {
-    const entity = new Entity();
-    this.entities.push(entity);
-    return entity;
+  addActor(actor: Actor) {
+    this.actors.push(actor);
   }
 
 }
