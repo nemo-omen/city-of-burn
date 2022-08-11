@@ -1,6 +1,7 @@
 import { Entity } from './index';
 import { Heal } from './capabilities/Heal';
 import { Harm } from './capabilities/Harm';
+import { Item } from './Item';
 
 type ActorOptions = {
   name?: string;
@@ -9,6 +10,7 @@ type ActorOptions = {
   stamina?: number;
   dexterity?: number;
   will?: number;
+  weapon: Item;
 };
 
 export class Actor extends Entity {
@@ -22,6 +24,7 @@ export class Actor extends Entity {
   heal: Heal;
   harm: Harm;
   inBattle = false;
+  weapon: Item;
   constructor (options: ActorOptions) {
     super();
 
@@ -32,6 +35,7 @@ export class Actor extends Entity {
       if (options.dexterity) this.dexterity = options.dexterity;
       if (options.will) this.will = options.will;
       if (options.healingFactor) this.healingFactor = options.healingFactor;
+      if (options.weapon) this.weapon = options.weapon;
     }
     this.maxHealth = this.health;
     this.heal = new Heal(this);
@@ -63,10 +67,16 @@ export class Actor extends Entity {
   }
 
   takeAttack(damage: number) {
-    console.log(`${this.name} has been attacked!`);
+    console.log(`${this.name} has been attacked for ${damage} points! They have ${this.health} hitpoints remaining`);
     // todo: some function that determines whether
     // a dodge is made
+    // todo: armor!
     this.harm.use(damage);
+  }
+
+  hit(target: Actor) {
+    // console.log(`${this.name} is attacking ${target.name}`);
+    this.weapon.attack.hit(target);
   }
 
 }
