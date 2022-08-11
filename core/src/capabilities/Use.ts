@@ -1,3 +1,3 @@
 export abstract class Use {
-  use(): any { }
+  use(unknown: unknown): void { }
 }

@@ -3,6 +3,7 @@ import { Heal } from './capabilities/Heal';
 import { Harm } from './capabilities/Harm';
 
 type ActorOptions = {
+  name?: string;
   health?: number;
   healingFactor?: number;
   stamina?: number;
@@ -11,25 +12,29 @@ type ActorOptions = {
 };
 
 export class Actor extends Entity {
+  name: string;
   health = 0;
+  healingFactor = 0;
   maxHealth = 0;
   stamina = 0;
   dexterity = 0;
   will = 0;
-  heal: Heal = new Heal(0);
-  harm: Harm = new Harm();
+  heal: Heal;
+  harm: Harm;
   constructor (options: ActorOptions) {
     super();
 
     if (options) {
+      if (options.name) this.name = options.name;
       if (options.health) this.health = options.health;
       if (options.stamina) this.stamina = options.stamina;
       if (options.dexterity) this.dexterity = options.dexterity;
       if (options.will) this.will = options.will;
-      if (options.healingFactor) this.heal.factor = options.healingFactor;
+      if (options.healingFactor) this.healingFactor = options.healingFactor;
     }
-
     this.maxHealth = this.health;
+    this.heal = new Heal(this);
+    this.harm = new Harm(this);
   }
 
   setHealth(health: number) {

@@ -1,17 +1,19 @@
 import { Use } from './Use';
+import { Actor } from '../Actor';
 
 export class Heal extends Use {
-  factor: number;
-  constructor (factor: number) {
+  actor: Actor;
+  constructor (actor: Actor) {
     super();
-    this.factor = factor;
+    this.actor = actor;
   }
 
-  use(currentHealth: number, maxHealth: number): number {
-    const healingResult = currentHealth + this.factor;
-    if (healingResult <= maxHealth) {
-      return currentHealth + this.factor;
+  use(): void {
+    const healingResult = this.actor.health + this.actor.healingFactor;
+    if (healingResult <= this.actor.maxHealth) {
+      this.actor.health = healingResult;
+      return;
     }
-    return maxHealth;
+    this.actor.health = this.actor.maxHealth;
   }
 }
